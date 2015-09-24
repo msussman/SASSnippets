@@ -1,0 +1,37 @@
+<snippet>
+  <content><![CDATA[
+
+
+*Perform a left join;
+
+%let outdata_join =  ${1:outdata};        **dataset created by join;
+%let indata_aa    =  ${2:indata_aa};      **main dataset of the left join;
+%let indata_bb    =  ${3:indata_bb};      **secondary dataset of the left join;
+%let join_var1_aa =  ${4:join_var1_aa};   **variable #1 for dataset aa being joined on;
+%let join_var1_bb =  ${5:join_var1_bb};   **variable #1 for dataset bb being joined on;
+%let join_var3_aa =  ${6:join_var1_aa};   **variable #3 being joined on;
+%let join_var4_bb =  ${7:join_var2_bb};   **variable #4 being joined on;
+
+proc sql;
+   create table &outdata_join as
+   select 
+    aa.${8: aa_var1}, 
+    aa.${9: aa_var2}, 
+    bb.${10:bb_var1}, 
+    bb.${11:bb_var2}
+   from &indata_aa aa
+   left join indata_bb bb
+   on aa.&join_var1_aa=bb.&join_var1_bb and aa.&join_var2_aa=bb.&join_var2_bb 
+quit;
+
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>Join_Left</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.sas</scope>
+  <description>Join Two Tables</description>
+</snippet>
+
+
+
+

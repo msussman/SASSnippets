@@ -1,0 +1,27 @@
+<snippet>
+  <content><![CDATA[
+
+
+*Tranpose Current Dataset;
+
+%let in_tran  = ${1:base_data};      **base dataset you're working with;
+%let out_tran = ${2:tranposed_data}; **output that has been tranposed;
+%let id_tran  = ${3:ID_Var};         **variable whose values become variable names in the transposed data, used with prefix;
+%let var_tran = ${4:Var1-Var20};     **data to be flipped in the tranpose;
+
+
+proc transpose data=&in_tran out=&out_tran;
+  id &id_tran;
+  idlabel &id_tran;
+  var &var_tran;
+run;
+    
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>Transpose</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.sas</scope>
+  <description>Proc Transpose</description>
+</snippet>
+
+

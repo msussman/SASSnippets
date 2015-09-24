@@ -1,0 +1,52 @@
+<snippet>
+  <content><![CDATA[
+
+   ****************************************************************************
+   * Generate Data Dictionary file
+   ****************************************************************************;
+   DATA _NULL_;
+      SET FORMATS;
+      FILE "..\DATA\${1:INDATA}_LAYOUT.TXT" LRECL=9999 RECFM=V;
+
+      LENGTH CTYPE $10;
+      IF TYPE = 1 THEN DO;
+         CTYPE = "Numeric";
+         IF FORMATL GT 0 THEN OLEN  = FLOOR(FORMATL);
+         ELSE OLEN = 8;
+      END;
+      ELSE IF TYPE = 2 THEN DO;
+         CTYPE = "Character";
+         OLEN  = LENGTH;
+      END;
+      IF _N_ = 1 THEN DO;
+         PUT "DATA DICTIONARY/FILE LAYOUT FOR ${1:INDATA}.DAT";
+         PUT; PUT;
+         PUT "SAS NAME          LENGTH   FORMAT   START     END     TYPE        LABEL";
+         PUT "--------          ------   ------   -----    -----   ---------   ------------------------------";
+         START = 1;
+         END = OLEN;
+      END;
+      ELSE DO;
+         END + OLEN;
+         START = END - OLEN + 1;
+      END;
+
+      PUT @001 NAME    $CHAR10.
+          @020 OLEN    Z4.
+          @028 FORMC   $CHAR7.
+          @037 START   Z5.
+          @046 END     Z5.
+          @054 CTYPE   $CHAR10.
+          @067 LABEL   $CHAR50.
+         ;
+      RETAIN START END;
+   RUN;
+
+
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>dictionary</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.sas</scope>
+  <description>Create a Data Dictionary</description>
+</snippet>

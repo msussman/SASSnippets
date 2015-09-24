@@ -1,0 +1,19 @@
+<snippet>
+  <content><![CDATA[
+
+* Define format values for ${1:description of format};
+proc format ;
+  value ${2:txtfmt}
+      " "      = "Missing"   
+    "${3:val}" = "${4:formatted val}"
+    "${5:val}" = "${6:formatted val}"
+  ;
+quit ;
+
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>fmt_char</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.sas</scope>
+  <description>proc format</description>
+</snippet>

@@ -1,0 +1,55 @@
+<snippet>
+  <content><![CDATA[
+
+
+*Perform lookup using hash objects (two lookups);
+
+%let outdata_hash =  ${1:outdata};        **dataset created by hash object lookup;
+%let hash_data    =  ${2:hash_data};      **lookup table for hash;
+%let hash_key     =  ${3:hash_key};       **variable used to hash data sets;
+%let hash_var1    =  ${4:hash_var1};      **variable being brough onto main dataset;
+%let hash_var2    =  ${5:hash_var2};      **variable being brough onto main dataset;
+%let hash_name    =  ${6:hash_name};      **name your hash;
+%let indata_hash  =  ${7:indata};         **main input dataset being hashed upon;
+
+*get varlist from indata_hash to keep field order entact;
+
+proc contents data=&indata_hash out=varlist noprint;
+run;
+
+proc sql noprint;
+  select name into: indata_hash_vars separated by ' ' from  varlist;
+quit;
+
+data &outdata_hash;
+  format &indata_hash_vars;
+  if _N_=1 then do;
+  if 0 then set &hash_data (keep=&hash_key &hash_var1 &hash_var2);
+  declare hash &hash_name (dataset: "&hash_data");
+    &hash_name..definekey ("&hash_key");
+    &hash_name..definedata ("&hash_var1", "&hash_var2");
+    &hash_name..definedone();
+  end;
+  set &indata_hash;
+  rc=&hash_name..find(key:&hash_key);
+    if rc=0 then do;
+      &hash_var1=&hash_var1;
+      &hash_var2=&hash_var2;
+    end;
+    else do;
+      &hash_var1='';
+      &hash_var2='';
+    end;
+run;
+
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>Hash</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.sas</scope>
+  <description>Hash Objects</description>
+</snippet>
+
+
+
+

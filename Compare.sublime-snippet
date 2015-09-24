@@ -1,0 +1,26 @@
+<snippet>
+  <content><![CDATA[
+
+
+*Compare dataset to previous version;
+
+%let base = ${1:base_data}; *base dataset you're working with;
+%let comp = ${2:compare_data}; *previous version;
+%let id = ${3:sort_var}; *variable(s) to sort data sets by;
+
+proc sort data=&base out=base; by &id; run;
+
+proc sort data=&comp out=comp; by &id; run;
+
+proc tranpose data=base comp=comp maxprint=(50,500) method=exact listall;
+   id &id;
+run;
+    
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>Compare</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.sas</scope>
+  <description>Proc Compare</description>
+</snippet>
+

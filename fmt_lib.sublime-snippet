@@ -1,0 +1,70 @@
+<snippet>
+  <content><![CDATA[
+
+****************************************************************************
+* PROGRAM NAME:  MakeFmtLib.SAS
+* PROGRAMMER:    ${1: Your Name}
+* DATE:          ${2: mm/dd/yyyy}
+* PROJECT:       ${3: Project Name}
+* PURPOSE:       Generate format definition library 
+*
+* OUTPUT:        FORMATS.sas7bcat SAS V9 Format definition library
+****************************************************************************;
+LIBNAME OUT ".";
+
+PROC FORMAT LIBRARY=OUT;
+   TITLE "Format Library for final version of ${3: Project Name}";
+  
+  *Ex. Complete format;
+
+  /*VALUE COSTF
+      .      = ‘Missing’
+      0      = ‘Zero’
+      1-100  = ‘$1 - $100’
+    101-200  = ‘$101 - $200’
+    201-500  = ‘$201 - $500’
+    501-800  = ‘$501 - $800’
+    801-1000 = ‘$801 - $1000’
+    OTHER    = ‘>$1000’;*/
+
+
+
+  * Define format values for ${4:description of format};
+        proc format ;
+          value ${5:txtfmt}
+              .        = "Missing"
+              0        = "Zero"   
+            ${6:val}   = "${7:formatted val}"
+            ${8:val}   = "${9:formatted val}"
+          ;
+        quit ;
+   
+  * Define format values for ${10:description of format};
+        proc format ;
+          value ${11:txtfmt}
+              .        = "Missing"
+              0        = "Zero"   
+            ${12:val}  = "${13:formatted val}"
+            ${14:val}  = "${15:formatted val}"
+          ;
+        quit ;
+
+  * Define format values for ${16:description of format};
+        proc format ;
+          value ${17:txtfmt}
+              " "      = "Missing"   
+            "${18:val}" = "${19:formatted val}"
+            "${20:val}" = "${21:formatted val}"
+          ;
+        quit ;
+ 
+RUN;
+
+
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>fmt_lib</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.sas</scope>
+  <description>create a format library</description>
+</snippet>

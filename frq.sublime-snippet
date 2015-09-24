@@ -1,0 +1,16 @@
+<snippet>
+  <content><![CDATA[
+
+TITLE1 "FREQs of ${1:v1} and ${2:v2} from ${3:indata}";
+
+proc freq data = ${3:indata} ;
+  tables ${1:v1} * ${2:v2} / missing list;
+run ;
+
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>frq</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.sas</scope>
+  <description>proc freq</description>
+</snippet>

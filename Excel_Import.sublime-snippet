@@ -1,0 +1,18 @@
+<snippet>
+  <content><![CDATA[
+proc import datafile=${1:&infile} dbms=excel2007 out=${2:indata}  replace;
+    sheet = "${3:&InSheet}"
+    getnames = yes;
+    mixed    = yes;
+    scantext = yes;
+    usedate  = yes;
+    scantime = yes;
+run;
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>Excel_Import</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.sas</scope>
+  <description>Proc Import Excel</description>
+</snippet>
+

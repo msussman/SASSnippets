@@ -1,0 +1,61 @@
+<snippet>
+  <content><![CDATA[
+**************************************************************************** 
+* PROGRAM: ${1:Program_Name}.SAS
+* TASK:    ${2:Charge Code} ${3:(Project Nickname)}
+* PURPOSE:${4:Description of SAS Program Purpose}
+*          
+*
+* WRITTEN: ${5:mm}/${6:dd}/${7:yyyy} BY ${8:First Name} ${9:Last Name}
+*
+* MODIFIED:
+* 1)   
+* 2)
+* INPUTS:
+* 1) ${10:lib.in_data1} - ${11: Input #1 Description} 
+* 2) ${13:lib.in_data2} - ${14: Input #2 Description}  
+* 3) ${16:lib.in_data3} - ${17: Input #3 Description} 
+* 4) ${19:lib.in_data4} - ${20: Input #4 Description} 
+* 5) ${22:lib.in_data5} - ${23: Input #5 Description} 
+*
+* OUTPUTS:
+* 1) ${25:lib.out_data1} - ${26: Output #1 Description} 
+* 2) ${28:lib.out_data1} - ${29: Output #1 Description}
+*
+* INCLUDES:  
+* 1) ${31: Include Name} - ${32:Include Description}
+*
+* NOTES: 
+* 1) 
+****************************************************************************;
+
+* INPUTS:;
+  
+  %let ${12:in_1} = ${10:lib.in_data1};
+  %let ${15:in_2} = ${13:lib.in_data2};
+  %let ${18:in_3} = ${16:lib.in_data3};
+  %let ${21:in_4} = ${19:lib.in_data4};
+  %let ${24:in_5} = ${22:lib.in_data5};
+
+* OUTPUTS:;
+  %let ${27:out_1} = ${25:lib.out_data1};
+  %let ${30:out_2} = ${28:lib.out_data2};
+
+* INCLUDES:;
+  %include //${33:include file path}/${31:Include Name}; 
+
+* FORMAT LIBRARY;
+  LIBNAME FMT_LIB ".";
+
+ *OPTIONS;
+    Options NOXWAIT FORMCHAR='|_---|+|---+=|-/\<>*' MPRINT MLOGIC SYMBOLGEN  NOCENTER MINOPERATOR 
+            VALIDVARNAME=V6 VARINTCHK=ERROR LS=MAX PS=MAX ;  	  
+
+
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>hdr</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.sas</scope>
+  <description>Program header block</description>
+</snippet>

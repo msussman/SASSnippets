@@ -1,0 +1,17 @@
+<snippet>
+  <content><![CDATA[
+
+*label variables for this dataset;
+
+label 
+      ${1:Var1} = "${2:label1}"
+                            
+                              ;
+
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>lbl</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.sas</scope>
+  <description>add labels to variables</description>
+</snippet>
