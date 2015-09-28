@@ -2,7 +2,6 @@
   <content><![CDATA[
 
 *simple array example;
-
 data net_income;
 set rev_exp;
 array revenue[*] rev1-rev12;
@@ -13,12 +12,10 @@ net_inc[i]=revenue[i] - exp[i];
 end;
 run; 
 
-
 /*When it is necessary to know how many elements are in the array, the DIM function can be used to return the count
 of elements.*/
 
 array allnums {*} _numeric_;
-
 do i = 1 to dim(allnums);
  allnums{i} = round(allnums{i},.1);
 end;
@@ -28,8 +25,8 @@ elements of the array. */
 
 ]]></content>
   <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-  <tabTrigger>array</tabTrigger>
+  <tabTrigger>pgnname</tabTrigger>
   <!-- Optional: Set a scope to limit where the snippet will trigger -->
   <scope>source.sas</scope>
-  <description>all nums array example</description>
+  <description>macro to generate program name</description>
 </snippet>
