@@ -12,7 +12,7 @@ proc sort data=&base out=base; by &id; run;
 
 proc sort data=&comp out=comp; by &id; run;
 
-proc tranpose data=base comp=comp maxprint=(50,500) method=exact listall;
+proc compare data=base comp=comp maxprint=(50,500) method=exact listall;
    id &id;
 run;
     
